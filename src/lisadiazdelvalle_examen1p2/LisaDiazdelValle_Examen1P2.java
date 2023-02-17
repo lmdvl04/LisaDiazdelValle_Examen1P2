@@ -14,7 +14,8 @@ public class LisaDiazdelValle_Examen1P2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        GUI G = new GUI();
+        G.setVisible(true);
     }
     
 }
