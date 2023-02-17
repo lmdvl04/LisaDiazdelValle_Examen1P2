@@ -6,6 +6,7 @@ package lisadiazdelvalle_examen1p2;
 
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +20,9 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
         this.setLocationRelativeTo(null);
+        String s = "";
+        
+       // CajaListar.setText();
     }
 
     /**
@@ -56,6 +60,8 @@ public class GUI extends javax.swing.JFrame {
         Tipo = new javax.swing.JTextField();
         sip = new javax.swing.JRadioButton();
         nop = new javax.swing.JRadioButton();
+        AgregarE = new javax.swing.JButton();
+        AtrasE = new javax.swing.JButton();
         pendejo = new javax.swing.ButtonGroup();
         AgregarLaptop = new javax.swing.JFrame();
         jPanel2 = new javax.swing.JPanel();
@@ -74,7 +80,15 @@ public class GUI extends javax.swing.JFrame {
         sil = new javax.swing.JRadioButton();
         nol = new javax.swing.JRadioButton();
         AgregarLap = new javax.swing.JButton();
+        Atraslap = new javax.swing.JButton();
         imbecil = new javax.swing.ButtonGroup();
+        Eliminar = new javax.swing.JFrame();
+        Listar = new javax.swing.JDialog();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        CajaListar = new javax.swing.JTextArea();
+        AtrasListar = new javax.swing.JButton();
         Menu = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         BotonCRUD = new javax.swing.JButton();
@@ -100,6 +114,11 @@ public class GUI extends javax.swing.JFrame {
         BotonListar.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         BotonListar.setText("Listar");
         BotonListar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BotonListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonListarActionPerformed(evt);
+            }
+        });
 
         BotonEliminar.setBackground(new java.awt.Color(204, 0, 204));
         BotonEliminar.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
@@ -214,6 +233,22 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        AgregarE.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        AgregarE.setText("Agregar");
+        AgregarE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarEActionPerformed(evt);
+            }
+        });
+
+        AtrasE.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        AtrasE.setText("Atras");
+        AtrasE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtrasEActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -248,14 +283,19 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nop, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(sip, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(160, 160, 160)
-                                    .addComponent(Tipo))
-                                .addComponent(HostNameE)
-                                .addComponent(MascaraE)
-                                .addComponent(DireccionIPE, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(AtrasE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(AgregarE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(sip, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(160, 160, 160)
+                                        .addComponent(Tipo))
+                                    .addComponent(HostNameE)
+                                    .addComponent(MascaraE)
+                                    .addComponent(DireccionIPE, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -296,7 +336,11 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(sip)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(nop)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AgregarE)
+                    .addComponent(AtrasE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout AgregarPCLayout = new javax.swing.GroupLayout(AgregarPC.getContentPane());
@@ -355,6 +399,14 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        Atraslap.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        Atraslap.setText("Atras");
+        Atraslap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtraslapActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -388,6 +440,8 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(Atraslap)
+                                .addGap(18, 18, 18)
                                 .addComponent(AgregarLap))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -431,7 +485,8 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sil)
                     .addComponent(nol)
-                    .addComponent(AgregarLap))
+                    .addComponent(AgregarLap)
+                    .addComponent(Atraslap))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -444,6 +499,74 @@ public class GUI extends javax.swing.JFrame {
         AgregarLaptopLayout.setVerticalGroup(
             AgregarLaptopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout EliminarLayout = new javax.swing.GroupLayout(Eliminar.getContentPane());
+        Eliminar.getContentPane().setLayout(EliminarLayout);
+        EliminarLayout.setHorizontalGroup(
+            EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        EliminarLayout.setVerticalGroup(
+            EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        jPanel3.setBackground(new java.awt.Color(255, 153, 255));
+
+        jLabel18.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
+        jLabel18.setText("Listar");
+
+        CajaListar.setColumns(20);
+        CajaListar.setRows(5);
+        jScrollPane1.setViewportView(CajaListar);
+
+        AtrasListar.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        AtrasListar.setText("Atras");
+        AtrasListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtrasListarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(238, 238, 238)
+                .addComponent(jLabel18)
+                .addContainerGap(263, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(AtrasListar)
+                .addGap(31, 31, 31))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel18)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(AtrasListar)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout ListarLayout = new javax.swing.GroupLayout(Listar.getContentPane());
+        Listar.getContentPane().setLayout(ListarLayout);
+        ListarLayout.setHorizontalGroup(
+            ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        ListarLayout.setVerticalGroup(
+            ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -476,6 +599,11 @@ public class GUI extends javax.swing.JFrame {
         Salir.setBackground(new java.awt.Color(255, 51, 153));
         Salir.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         Salir.setText("X");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
@@ -562,6 +690,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void sipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sipActionPerformed
         pendejo.add(sip);
+        
     }//GEN-LAST:event_sipActionPerformed
 
     private void nopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nopActionPerformed
@@ -577,11 +706,87 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_nolActionPerformed
 
     private void AgregarLapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarLapActionPerformed
+        boolean RGB=false;
+        if(imbecil.getSelection()==sip){
+            RGB = true;
+        }
+        
         try {
-            computadoras.add(new Laptop ());
+            computadoras.add(new Laptop (Marca.getText(),Definicion.getText(),RGB,DireccionIPL.getText(),MascaraL.getText(),HostNameL.getText()));
+            Marca.setText("");
+            Definicion.setText("");
+            DireccionIPL.setText("");
+            MascaraL.setText("");
+            HostNameL.setText("");
+
+            JOptionPane.showMessageDialog(this, "Laptop agregado exitosamente");
+
+
         } catch (Exception e) {
         }
+  
     }//GEN-LAST:event_AgregarLapActionPerformed
+
+    private void AgregarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarEActionPerformed
+        boolean tarjeta=false;
+        if(pendejo.getSelection()==sip){
+            tarjeta = true;
+        }
+        
+        try {
+            computadoras.add(new Escritorio (Integer.parseInt(RAM.getText()),Integer.parseInt(Almacen.getText()),Tipo.getText(),tarjeta,DireccionIPE.getText(),MascaraE.getText(),HostNameE.getText()));
+            RAM.setText("");
+            Almacen.setText("");
+            Tipo.setText("");
+            DireccionIPE.setText("");
+            MascaraE.setText("");
+            HostNameE.setText("");
+
+            JOptionPane.showMessageDialog(this, "PC de Escritorio agregado exitosamente");
+
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_AgregarEActionPerformed
+
+    private void AtraslapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtraslapActionPerformed
+        AgregarLaptop.setVisible(false);
+        crud.pack();
+        crud.setLocationRelativeTo(this);
+        crud.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        crud.setVisible(true);
+    }//GEN-LAST:event_AtraslapActionPerformed
+
+    private void AtrasEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasEActionPerformed
+        AgregarPC.setVisible(false);
+        crud.pack();
+        crud.setLocationRelativeTo(this);
+        crud.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        crud.setVisible(true);
+    }//GEN-LAST:event_AtrasEActionPerformed
+
+    private void BotonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonListarActionPerformed
+        crud.setVisible(false);
+        Listar.pack();
+        Listar.setLocationRelativeTo(this);
+        Listar.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        Listar.setVisible(true);
+
+            CajaListar.setText(computadoras.toString());
+    
+    }//GEN-LAST:event_BotonListarActionPerformed
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+       System.exit(0);
+    }//GEN-LAST:event_SalirActionPerformed
+
+    private void AtrasListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasListarActionPerformed
+        Listar.setVisible(false);
+        crud.pack();
+        crud.setLocationRelativeTo(this);
+        crud.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        crud.setVisible(true);
+    }//GEN-LAST:event_AtrasListarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -619,10 +824,14 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AgregarE;
     private javax.swing.JButton AgregarLap;
     private javax.swing.JFrame AgregarLaptop;
     private javax.swing.JFrame AgregarPC;
     private javax.swing.JTextField Almacen;
+    private javax.swing.JButton AtrasE;
+    private javax.swing.JButton AtrasListar;
+    private javax.swing.JButton Atraslap;
     private javax.swing.JButton BotonAgregar;
     private javax.swing.JButton BotonAgregar1;
     private javax.swing.JButton BotonAtras;
@@ -631,11 +840,14 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton BotonIngresar;
     private javax.swing.JButton BotonListar;
     private javax.swing.JPanel CRUD;
+    private javax.swing.JTextArea CajaListar;
     private javax.swing.JTextField Definicion;
     private javax.swing.JTextField DireccionIPE;
     private javax.swing.JTextField DireccionIPL;
+    private javax.swing.JFrame Eliminar;
     private javax.swing.JTextField HostNameE;
     private javax.swing.JTextField HostNameL;
+    private javax.swing.JDialog Listar;
     private javax.swing.JTextField Marca;
     private javax.swing.JTextField MascaraE;
     private javax.swing.JTextField MascaraL;
@@ -654,6 +866,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -664,6 +877,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JRadioButton nol;
     private javax.swing.JRadioButton nop;
     private javax.swing.ButtonGroup pendejo;
