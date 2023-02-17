@@ -83,6 +83,13 @@ public class GUI extends javax.swing.JFrame {
         Atraslap = new javax.swing.JButton();
         imbecil = new javax.swing.ButtonGroup();
         Eliminar = new javax.swing.JFrame();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        CajaEliminar = new javax.swing.JTextArea();
+        IndiceEliminar = new javax.swing.JTextField();
+        EliminarBoton = new javax.swing.JButton();
         Listar = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
@@ -501,15 +508,76 @@ public class GUI extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jPanel4.setBackground(new java.awt.Color(255, 153, 255));
+
+        jLabel19.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
+        jLabel19.setText("Eliminar");
+
+        jLabel20.setFont(new java.awt.Font("Perpetua Titling MT", 0, 14)); // NOI18N
+        jLabel20.setText("Ingrese el indice a eliminar:");
+
+        CajaEliminar.setColumns(20);
+        CajaEliminar.setRows(5);
+        jScrollPane2.setViewportView(CajaEliminar);
+
+        EliminarBoton.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        EliminarBoton.setText("Eliminar");
+        EliminarBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarBotonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(EliminarBoton)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel19))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(IndiceEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(IndiceEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(EliminarBoton))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout EliminarLayout = new javax.swing.GroupLayout(Eliminar.getContentPane());
         Eliminar.getContentPane().setLayout(EliminarLayout);
         EliminarLayout.setHorizontalGroup(
             EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         EliminarLayout.setVerticalGroup(
             EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 153, 255));
@@ -656,7 +724,13 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
-        // TODO add your handling code here:
+        crud.setVisible(false);
+        Eliminar.pack();
+        Eliminar.setLocationRelativeTo(this);
+        Eliminar.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        Eliminar.setVisible(true);
+        
+        CajaEliminar.setText(computadoras.toString());
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void BotonCRUDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCRUDActionPerformed
@@ -788,6 +862,23 @@ public class GUI extends javax.swing.JFrame {
         crud.setVisible(true);
     }//GEN-LAST:event_AtrasListarActionPerformed
 
+    private void EliminarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarBotonActionPerformed
+        int selectedindex;
+        try {
+            selectedindex = Integer.parseInt(IndiceEliminar.getText());
+            computadoras.remove(selectedindex);
+            
+        } catch (Exception e) {
+        }
+        
+        Eliminar.setVisible(false);
+        crud.pack();
+        crud.setLocationRelativeTo(this);
+        crud.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        crud.setVisible(true);
+        IndiceEliminar.setText(""); 
+    }//GEN-LAST:event_EliminarBotonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -840,13 +931,16 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton BotonIngresar;
     private javax.swing.JButton BotonListar;
     private javax.swing.JPanel CRUD;
+    private javax.swing.JTextArea CajaEliminar;
     private javax.swing.JTextArea CajaListar;
     private javax.swing.JTextField Definicion;
     private javax.swing.JTextField DireccionIPE;
     private javax.swing.JTextField DireccionIPL;
     private javax.swing.JFrame Eliminar;
+    private javax.swing.JButton EliminarBoton;
     private javax.swing.JTextField HostNameE;
     private javax.swing.JTextField HostNameL;
+    private javax.swing.JTextField IndiceEliminar;
     private javax.swing.JDialog Listar;
     private javax.swing.JTextField Marca;
     private javax.swing.JTextField MascaraE;
@@ -867,7 +961,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -878,7 +974,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JRadioButton nol;
     private javax.swing.JRadioButton nop;
     private javax.swing.ButtonGroup pendejo;
