@@ -63,9 +63,9 @@ public class Escritorio extends Computadora {
     public String toString() {
         String s = super.toString() + "\nEscritorio"+ "\nRAM:" + RAM + " GB" + "\nCapacidad de Almacen:" + CapAlmacen + " GB" + "\nTipo de almacen:" + Tipo +"\nTarjeta Grafica:";
         if (TarjetaGrafica) {
-            s += " Si" ;
+            s += " Si\n" ;
         } else {
-            s += " No" ;
+            s += " No\n" ;
         }
         return s;
     }

@@ -53,9 +53,9 @@ public class Laptop extends Computadora {
     public String toString() {
         String s = super.toString() + "\nLaptop" +"\nMarca:" + marca + "\nDefinicion de Pantalla:" + DefPantalla + "\nRGB:";
         if (RGB) {
-            s += " Si";
+            s += " Si\n";
         } else {
-            s += " No";
+            s += " No\n";
         }
         return s;
     }
