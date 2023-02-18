@@ -5,6 +5,8 @@
 package lisadiazdelvalle_examen1p2;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -14,6 +16,8 @@ import javax.swing.JOptionPane;
  */
 public class GUI extends javax.swing.JFrame {
 
+    static Scanner leer = new Scanner(System.in);
+
     /**
      * Creates new form GUI
      */
@@ -21,8 +25,8 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         String s = "";
-        
-       // CajaListar.setText();
+
+        // CajaListar.setText();
     }
 
     /**
@@ -141,6 +145,11 @@ public class GUI extends javax.swing.JFrame {
         BotonAtras.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         BotonAtras.setText("Atras");
         BotonAtras.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BotonAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonAtrasActionPerformed(evt);
+            }
+        });
 
         BotonAgregar1.setBackground(new java.awt.Color(204, 0, 204));
         BotonAgregar1.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
@@ -729,7 +738,7 @@ public class GUI extends javax.swing.JFrame {
         Eliminar.setLocationRelativeTo(this);
         Eliminar.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         Eliminar.setVisible(true);
-        
+
         CajaEliminar.setText(computadoras.toString());
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
@@ -742,8 +751,36 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonCRUDActionPerformed
 
     private void BotonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIngresarActionPerformed
-        this.setVisible(false);
-        //crud.setVisible(true);
+        System.out.println(computadoras.toString());
+        System.out.println("Ingrese el indice de la computadora: ");
+        int indice = leer.nextInt();
+        Computadora c = computadoras.get(indice);
+        System.out.println(c.Hostname + "#");
+        String comando = "";
+        do{
+        System.out.println("Comando: ");
+        comando = leer.next();
+
+        switch (comando) {
+            case "ping": {
+                System.out.println("Ingrese la direccion ip: ");
+                String ip = leer.next();
+                System.out.println(c.ping(ip));
+            }break;
+            case "show":{
+                System.out.println(c.getIP());
+                System.out.println(c.getMascaraRed());
+            }break;
+            case "exit":{
+                this.setVisible(true);
+                this.toFront();
+                this.requestFocus();
+                
+            }
+            
+        }
+        }while(comando!="exit");
+
     }//GEN-LAST:event_BotonIngresarActionPerformed
 
     private void BotonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarActionPerformed
@@ -764,7 +801,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void sipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sipActionPerformed
         pendejo.add(sip);
-        
+
     }//GEN-LAST:event_sipActionPerformed
 
     private void nopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nopActionPerformed
@@ -780,13 +817,13 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_nolActionPerformed
 
     private void AgregarLapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarLapActionPerformed
-        boolean RGB=false;
-        if(imbecil.getSelection()==sip){
+        boolean RGB = false;
+        if (imbecil.getSelection() == sip) {
             RGB = true;
         }
-        
+
         try {
-            computadoras.add(new Laptop (Marca.getText(),Definicion.getText(),RGB,DireccionIPL.getText(),MascaraL.getText(),HostNameL.getText()));
+            computadoras.add(new Laptop(Marca.getText(), Definicion.getText(), RGB, DireccionIPL.getText(), MascaraL.getText(), HostNameL.getText()));
             Marca.setText("");
             Definicion.setText("");
             DireccionIPL.setText("");
@@ -795,20 +832,19 @@ public class GUI extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, "Laptop agregado exitosamente");
 
-
         } catch (Exception e) {
         }
-  
+
     }//GEN-LAST:event_AgregarLapActionPerformed
 
     private void AgregarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarEActionPerformed
-        boolean tarjeta=false;
-        if(pendejo.getSelection()==sip){
+        boolean tarjeta = false;
+        if (pendejo.getSelection() == sip) {
             tarjeta = true;
         }
-        
+
         try {
-            computadoras.add(new Escritorio (Integer.parseInt(RAM.getText()),Integer.parseInt(Almacen.getText()),Tipo.getText(),tarjeta,DireccionIPE.getText(),MascaraE.getText(),HostNameE.getText()));
+            computadoras.add(new Escritorio(Integer.parseInt(RAM.getText()), Integer.parseInt(Almacen.getText()), Tipo.getText(), tarjeta, DireccionIPE.getText(), MascaraE.getText(), HostNameE.getText()));
             RAM.setText("");
             Almacen.setText("");
             Tipo.setText("");
@@ -817,7 +853,6 @@ public class GUI extends javax.swing.JFrame {
             HostNameE.setText("");
 
             JOptionPane.showMessageDialog(this, "PC de Escritorio agregado exitosamente");
-
 
         } catch (Exception e) {
         }
@@ -846,12 +881,12 @@ public class GUI extends javax.swing.JFrame {
         Listar.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         Listar.setVisible(true);
 
-            CajaListar.setText(computadoras.toString());
-    
+        CajaListar.setText(computadoras.toString());
+
     }//GEN-LAST:event_BotonListarActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-       System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_SalirActionPerformed
 
     private void AtrasListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasListarActionPerformed
@@ -867,17 +902,43 @@ public class GUI extends javax.swing.JFrame {
         try {
             selectedindex = Integer.parseInt(IndiceEliminar.getText());
             computadoras.remove(selectedindex);
-            
+
         } catch (Exception e) {
         }
-        
+
         Eliminar.setVisible(false);
         crud.pack();
         crud.setLocationRelativeTo(this);
         crud.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         crud.setVisible(true);
-        IndiceEliminar.setText(""); 
+        IndiceEliminar.setText("");
     }//GEN-LAST:event_EliminarBotonActionPerformed
+
+    private void BotonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAtrasActionPerformed
+        this.setVisible(true);
+        crud.setVisible(false);
+    }//GEN-LAST:event_BotonAtrasActionPerformed
+
+    public static boolean exists(String ip) {
+        boolean exist = false;
+        for (int i = 0; i < computadoras.size(); i++) {
+            Computadora c = computadoras.get(i);
+            if (c.getIP() == ip) {
+                exist = true;
+            }
+
+        }
+        return exist;
+    }
+
+    public static String nombre(String ip) {
+        String nombre = "";
+        for (int i = 0; i < computadoras.size(); i++) {
+            Computadora co = computadoras.get(i);
+            nombre = co.getHostname();
+        }
+        return nombre;
+    }
 
     /**
      * @param args the command line arguments
@@ -983,5 +1044,5 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton sil;
     private javax.swing.JRadioButton sip;
     // End of variables declaration//GEN-END:variables
-ArrayList <Computadora> computadoras = new ArrayList();
+static ArrayList<Computadora> computadoras = new ArrayList();
 }
