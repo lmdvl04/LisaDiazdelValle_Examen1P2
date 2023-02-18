@@ -751,35 +751,36 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonCRUDActionPerformed
 
     private void BotonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIngresarActionPerformed
+        this.setVisible(false);
         System.out.println(computadoras.toString());
         System.out.println("Ingrese el indice de la computadora: ");
         int indice = leer.nextInt();
         Computadora c = computadoras.get(indice);
         System.out.println(c.Hostname + "#");
         String comando = "";
-        do{
-        System.out.println("Comando: ");
-        comando = leer.next();
+        do {
+            System.out.println("Comando: ");
+            comando = leer.next();
 
-        switch (comando) {
-            case "ping": {
-                System.out.println("Ingrese la direccion ip: ");
-                String ip = leer.next();
-                System.out.println(c.ping(ip));
-            }break;
-            case "show":{
-                System.out.println(c.getIP());
-                System.out.println(c.getMascaraRed());
-            }break;
-            case "exit":{
-                this.setVisible(true);
-                this.toFront();
-                this.requestFocus();
-                
+            switch (comando) {
+                case "ping": {
+                    System.out.println("Ingrese la direccion ip: ");
+                    String ip = leer.next();
+                    System.out.println(c.ping(ip));
+                }
+                break;
+                case "show": {
+                    System.out.println(c.getIP());
+                    System.out.println(c.getMascaraRed());
+                }
+                break;
+                case "exit": {
+                    this.setVisible(true);
+                    
+                }
+
             }
-            
-        }
-        }while(comando!="exit");
+        } while (comando != "exit");
 
     }//GEN-LAST:event_BotonIngresarActionPerformed
 
